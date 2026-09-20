@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #31251f;
+  background: #fffaf4;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 72px 24px;
+  text-align: center;
+  color: #fffaf4;
+  background: #a7463d;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4rem;
+}
+
+main {
+  width: 90%;
+  max-width: 960px;
+  margin: 64px auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+article {
+  max-width: 360px;
+  margin: 36px auto;
+  padding: 28px;
+  text-align: center;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(49, 37, 31, 0.12);
+}
+
+button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  color: white;
+  background: #a7463d;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  color: white;
+  background: #31251f;
+}
+.produits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.photo-bijou {
+  display: grid;
+  width: 100%;
+  height: 180px;
+  place-items: center;
+  border-radius: 12px;
+  background: #f6e7d9;
+  font-size: 72px;
+}
+
+.prix {
+  color: #a7463d;
+  font-size: 20px;
+  font-weight: bold;
+}
+.photo-bijou img {
+  display: none;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.bouton-photo {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #a7463d;
+  background: #f6e7d9;
+  cursor: pointer;
+}
+
+.bouton-photo input {
+  display: none;
+}
+.photo-bijou {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f6e7d9;
+}
+
+.photo-bijou img {
+  display: none;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.panier-bouton {
+  margin-top: 20px;
+  color: #a7463d;
+  background: #fffaf4;
+}
+
+#panier {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  text-align: center;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(49, 37, 31, 0.12);
+}
+
+.total-panier {
+  font-size: 20px;
+  font-weight: bold;
+}
