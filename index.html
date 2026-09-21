@@ -8,17 +8,17 @@
 </head>
 
 <body>
- <header>
-  <h1>Ma poulette</h1>
-  <p>Bijoux artisanaux, créés avec amour.</p>
-
-  <button id="ouvrir-panier" class="panier-bouton">
-    Voir mon panier (<span id="compteur-panier">0</span>)
-  </button>
-</header>
+  <header>
+    <h1>Ma poulette</h1>
+    <p>Bijoux artisanaux, créés avec amour.</p>
+    <button id="ouvrir-panier" class="panier-bouton">
+      Voir mon panier (<span id="compteur-panier">0</span>)
+    </button>
+  </header>
 
   <main>
 <h2>Nos créations</h2>
+
   <section class="produits">
     <article>
       <div class="photo-bijou">
@@ -33,27 +33,23 @@
       <h3>Collier soleil</h3>
       <p>Un collier délicat, façonné à la main.</p>
       <p class="prix">35 €</p>
-      <button class="ajouter-panier" data-nom="Collier soleil" data-prix="35">
-  Ajouter au panier
-</button>
+      <button class="ajouter-panier" data-nom="Collier soleil" data-prix="35">Ajouter au panier</button>
     </article>
 
     <article>
       <div class="photo-bijou">
   <span>🌸</span>
-  <img id="photo-collier" alt="Collier soleil">
+  <img id="photo-boucles" alt="Boucles fleur">
 </div>
 
 <label class="bouton-photo">
   Choisir une photo
-  <input type="file" accept="image/*" data-photo="photo-collier">
+  <input type="file" accept="image/*" data-photo="photo-boucles">
 </label>
       <h3>Boucles fleur</h3>
       <p>Des boucles légères et colorées.</p>
       <p class="prix">28 €</p>
-      <button class="ajouter-panier" data-nom="Boucles fleur" data-prix="28">
-  Ajouter au panier
-</button>
+      <button class="ajouter-panier" data-nom="Boucles fleur" data-prix="28">Ajouter au panier</button>
     </article>
 
     <article>
@@ -61,27 +57,20 @@
       <h3>Bague lune</h3>
       <p>Une bague fine aux reflets dorés.</p>
       <p class="prix">32 €</p>
-      <button class="ajouter-panier" data-nom="Bague lune" data-prix="32">
-  Ajouter au panier
-</button>
+      <button class="ajouter-panier" data-nom="Bague lune" data-prix="32">Ajouter au panier</button>
     </article>
   </section>
   </main>
-<aside id="panier">
-  <h2>Votre panier</h2>
 
-  <div id="liste-panier">
-    <p>Votre panier est vide.</p>
-  </div>
+  <aside id="panier">
+    <h2>Votre panier</h2>
+    <div id="liste-panier">
+      <p>Votre panier est vide.</p>
+    </div>
+    <p class="total-panier">Total : <span id="total-panier">0</span> €</p>
+    <button id="envoyer-commande">Envoyer ma commande par e-mail</button>
+  </aside>
 
-  <p class="total-panier">
-    Total : <span id="total-panier">0</span> €
-  </p>
-
-  <button id="envoyer-commande">
-    Envoyer ma commande par e-mail
-  </button>
-</aside>
   <footer>
     <p>© 2026 Ma poulette</p>
   </footer>
@@ -103,6 +92,6 @@
     });
   });
 </script>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
