@@ -26,6 +26,21 @@ content:
       - name: prix
         label: Prix en euros
         type: number
+      - name: categorie
+        label: Catégorie
+        type: select
+        options:
+          values:
+            - name: bracelets
+              label: BRACELETS
+            - name: colliers
+              label: COLLIERS
+            - name: bagues
+              label: BAGUES
+            - name: boucles-oreilles
+              label: BOUCLES D’OREILLES
+            - name: autres-bijoux
+              label: AUTRES BIJOUX
       - name: image
         label: Photo
         type: image

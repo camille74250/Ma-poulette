@@ -34,7 +34,32 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    const categories = [
+      { id: "bracelets", titre: "BRACELETS" },
+      { id: "colliers", titre: "COLLIERS" },
+      { id: "bagues", titre: "BAGUES" },
+      { id: "boucles-oreilles", titre: "BOUCLES D’OREILLES" },
+      { id: "autres-bijoux", titre: "AUTRES BIJOUX" }
+    ];
+    const groupes = new Map(categories.map(function (categorie) {
+      return [categorie.id, []];
+    }));
+
     produitsCatalogue.forEach(function (produit) {
+      const categorie = groupes.has(produit.categorie) ? produit.categorie : "autres-bijoux";
+      groupes.get(categorie).push(produit);
+    });
+
+    categories.forEach(function (categorie) {
+      const produits = groupes.get(categorie.id);
+      if (produits.length === 0) return;
+
+      const section = creerElement("section", "section-categorie");
+      const titre = creerElement("h2", "titre-categorie", categorie.titre);
+      const grille = creerElement("div", "produits");
+      section.append(titre, grille);
+
+      produits.forEach(function (produit) {
       const article = creerElement("article", "article-produit");
       const photo = creerElement("div", "photo-bijou");
       if (produit.image) {
@@ -65,7 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
       icone.alt = "";
       bouton.append(icone);
       article.append(bouton);
-      listeProduits.append(article);
+      grille.append(article);
+      });
+
+      listeProduits.append(section);
     });
   }
 
@@ -114,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.location.href =
-      "mailto:lefranccamille4@gmail.com?subject=Commande Ma poulette&body=" +
+      "mailto:camcam.bijouterie@outlook.com?subject=Commande Ma poulette&body=" +
       encodeURIComponent(commande);
   });
 

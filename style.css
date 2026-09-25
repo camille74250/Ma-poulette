@@ -170,6 +170,20 @@ footer a {
 .mentions-legales dd {
   margin: 2px 0;
 }
+.catalogue-categories {
+  display: grid;
+  gap: 44px;
+}
+
+.titre-categorie {
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(167, 70, 61, 0.3);
+  color: #7f3934;
+  font-size: 1.55rem;
+  text-align: left;
+}
+
 .produits {
   display: flex;
   flex-wrap: wrap;
