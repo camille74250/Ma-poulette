@@ -52,12 +52,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     categories.forEach(function (categorie) {
       const produits = groupes.get(categorie.id);
-      if (produits.length === 0) return;
 
       const section = creerElement("section", "section-categorie");
+      section.id = categorie.id;
       const titre = creerElement("h2", "titre-categorie", categorie.titre);
       const grille = creerElement("div", "produits");
       section.append(titre, grille);
+
+      if (produits.length === 0) {
+        section.append(creerElement("p", "categorie-vide", "Aucun bijou pour le moment."));
+      }
 
       produits.forEach(function (produit) {
       const article = creerElement("article", "article-produit");
@@ -128,6 +132,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("ouvrir-panier").addEventListener("click", function () {
     document.getElementById("panier").scrollIntoView({ behavior: "smooth" });
+  });
+
+  const boutonMenuCategories = document.getElementById("bouton-menu-categories");
+  const liensCategories = document.getElementById("liens-categories");
+
+  boutonMenuCategories.addEventListener("click", function () {
+    const ouvert = boutonMenuCategories.getAttribute("aria-expanded") === "true";
+    boutonMenuCategories.setAttribute("aria-expanded", String(!ouvert));
+    boutonMenuCategories.setAttribute("aria-label", ouvert ? "Ouvrir les catégories" : "Fermer les catégories");
+    liensCategories.hidden = ouvert;
+  });
+
+  liensCategories.addEventListener("click", function (evenement) {
+    if (!evenement.target.closest("a")) return;
+    liensCategories.hidden = true;
+    boutonMenuCategories.setAttribute("aria-expanded", "false");
+    boutonMenuCategories.setAttribute("aria-label", "Ouvrir les catégories");
+  });
+
+  document.addEventListener("keydown", function (evenement) {
+    if (evenement.key !== "Escape" || liensCategories.hidden) return;
+    liensCategories.hidden = true;
+    boutonMenuCategories.setAttribute("aria-expanded", "false");
+    boutonMenuCategories.setAttribute("aria-label", "Ouvrir les catégories");
+    boutonMenuCategories.focus();
   });
 
   document.getElementById("envoyer-commande").addEventListener("click", function () {

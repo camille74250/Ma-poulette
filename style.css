@@ -11,7 +11,7 @@ body {
 
 header {
   position: relative;
-  padding: 72px 24px;
+  padding: 112px 24px 72px;
   text-align: center;
   color: #000;
   background: #f18296;
@@ -55,6 +55,10 @@ header {
 }
 
 @media (max-width: 480px) {
+  header {
+    padding-top: 94px;
+  }
+
   .panier-bouton {
     top: 16px;
     right: 16px;
@@ -305,4 +309,118 @@ footer a {
 
 #envoyer-commande {
   background: #f18296;
+}
+
+.menu-categories {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+}
+
+.bouton-menu-categories {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ffe7cd;
+}
+
+.bouton-menu-categories span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: #7f3934;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.bouton-menu-categories[aria-expanded="true"] span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.bouton-menu-categories[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.bouton-menu-categories[aria-expanded="true"] span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.liens-categories {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  width: 136px;
+  padding: 7px;
+  border: 1px solid rgba(127, 57, 52, 0.2);
+  border-radius: 28px;
+  background: #ffe7cd;
+  box-shadow: 0 6px 18px rgba(49, 37, 31, 0.14);
+  animation: menu-categories-apparait 180ms ease-out;
+}
+
+.liens-categories[hidden] {
+  display: none;
+}
+
+.liens-categories a {
+  display: flex;
+  min-width: 100px;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  color: #542c2b;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.liens-categories a:hover,
+.liens-categories a:focus-visible {
+  color: #fff;
+  background: #a7463d;
+}
+
+@keyframes menu-categories-apparait {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-categorie {
+  scroll-margin-top: 20px;
+}
+
+.categorie-vide {
+  margin: 0;
+  color: #665c58;
+  font-family: "Lora", serif;
+  font-size: 0.95rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 480px) {
+  .menu-categories {
+    top: 16px;
+    left: 16px;
+  }
+
+  .liens-categories { top: 52px; }
 }
