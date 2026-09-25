@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       { id: "colliers", titre: "COLLIERS" },
       { id: "bagues", titre: "BAGUES" },
       { id: "boucles-oreilles", titre: "BOUCLES D’OREILLES" },
-      { id: "autres-bijoux", titre: "AUTRES BIJOUX" }
+      { id: "autres-bijoux", titre: "CRÉER MON BIJOU" }
     ];
     const groupes = new Map(categories.map(function (categorie) {
       return [categorie.id, []];
