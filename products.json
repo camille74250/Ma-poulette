@@ -4,7 +4,6 @@
     "nom": "Collier soleil",
     "description": "Un collier délicat, façonné à la main.",
     "prix": 35,
-    "image": "",
     "emoji": "☀️"
   },
   {
@@ -12,7 +11,6 @@
     "nom": "Boucles fleur",
     "description": "Des boucles légères et colorées.",
     "prix": 28,
-    "image": "",
     "emoji": "🌸"
   },
   {
@@ -20,7 +18,13 @@
     "nom": "Bague lune",
     "description": "Une bague fine aux reflets dorés.",
     "prix": 32,
-    "image": "",
     "emoji": "🌙"
+  },
+  {
+    "id": "b281b9ba-4d8c-4162-851d-e36fe163938d",
+    "nom": "bracelet test",
+    "description": "ma poulette",
+    "prix": 45,
+    "image": "media/products/Capture d'écran 2026-09-25 210447.png"
   }
 ]
