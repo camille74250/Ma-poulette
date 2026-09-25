@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffe7cd">
+  <title>Gérer la boutique — Ma poulette</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cms-main { width: min(620px, calc(100% - 32px)); margin: 56px auto; }
+    .cms-panel { padding: 28px; border-top: 4px solid #f18296; background: #fff; box-shadow: 0 12px 30px rgba(49, 37, 31, .12); }
+    .cms-panel h1 { margin: 0 0 12px; font-family: "Lora", serif; font-size: 2rem; font-weight: 500; }
+    .cms-panel p, .cms-panel li { line-height: 1.6; }
+    .cms-panel ol { padding-left: 22px; }
+    .cms-lien { display: inline-flex; align-items: center; min-height: 46px; margin-top: 10px; padding: 0 18px; border-radius: 999px; color: #000; background: #f18296; font-family: Arial, sans-serif; text-decoration: none; }
+    .cms-lien:hover { background: #e97087; }
+    .retour-boutique { display: inline-block; margin-bottom: 18px; color: #000; font-family: Arial, sans-serif; }
+    .cms-note { color: #665c58; font-size: .92rem; }
+    @media (max-width: 480px) { .cms-main { margin: 28px auto; } .cms-panel { padding: 22px 18px; } .cms-panel h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+  <main class="cms-main">
+    <a class="retour-boutique" href="index.html">&larr; Retour à la boutique</a>
+    <section class="cms-panel">
+      <p class="eyebrow">MA POULETTE · CATALOGUE</p>
+      <h1>Gérer les articles</h1>
+      <p>Pages CMS enregistrera les articles et leurs photos dans le dépôt GitHub. GitHub Pages les affichera après la publication de la branche configurée.</p>
+      <p class="cms-note">Avant la première connexion, publie cette configuration et le catalogue sur GitHub.</p>
+      <ol>
+        <li>Connecte-toi à Pages CMS avec le compte GitHub qui possède le dépôt.</li>
+        <li>Autorise Pages CMS à accéder au dépôt <strong>camille74250/Ma-poulette</strong>.</li>
+        <li>Choisis la branche publiée par GitHub Pages (la branche courante du dépôt est <strong>main</strong>), puis ouvre <strong>Articles de la boutique</strong>.</li>
+        <li>Ajoute ou modifie les articles et enregistre : les changements seront publiés par GitHub Pages.</li>
+      </ol>
+      <a class="cms-lien" href="https://app.pagescms.org/" target="_blank" rel="noopener noreferrer">Ouvrir Pages CMS</a>
+      <p class="cms-note">La première connexion nécessite d’autoriser l’application GitHub Pages CMS. Ne partage jamais tes identifiants GitHub ou tes clés d’accès.</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Panier en osier">
+  <path d="M27 43c1-19 10-29 23-29s22 10 23 29" fill="none" stroke="#b85f78" stroke-width="7" stroke-linecap="round"/>
+  <path d="M13 39h74l-7 45H20z" fill="#e7a8b8" stroke="#a94f6b" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M17 51h66M16 63h68M15 75h70" fill="none" stroke="#c96f8b" stroke-width="4"/>
+  <path d="M25 41l8 42M39 41l5 43M53 41l-1 43M67 41l-6 43M80 41l-9 42" fill="none" stroke="#f5cbd5" stroke-width="3" opacity=".9"/>
+  <path d="M13 39h74" fill="none" stroke="#f8d9df" stroke-width="4"/>
+</svg>

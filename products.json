@@ -1,0 +1,26 @@
+[
+  {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "nom": "Collier soleil",
+    "description": "Un collier délicat, façonné à la main.",
+    "prix": 35,
+    "image": "",
+    "emoji": "☀️"
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000002",
+    "nom": "Boucles fleur",
+    "description": "Des boucles légères et colorées.",
+    "prix": 28,
+    "image": "",
+    "emoji": "🌸"
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "nom": "Bague lune",
+    "description": "Une bague fine aux reflets dorés.",
+    "prix": 32,
+    "image": "",
+    "emoji": "🌙"
+  }
+]

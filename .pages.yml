@@ -1,0 +1,37 @@
+media:
+  input: media/products
+  output: media/products
+  categories: [image]
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: products
+    label: Articles de la boutique
+    type: file
+    path: products.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Identifiant
+        type: uuid
+        options:
+          editable: false
+      - name: nom
+        label: Nom de l’article
+        type: string
+      - name: description
+        label: Description
+        type: text
+      - name: prix
+        label: Prix en euros
+        type: number
+      - name: image
+        label: Photo
+        type: image
+        options:
+          path: media/products
+          extensions: [jpg, jpeg, png, webp]
+      - name: emoji
+        label: Icône affichée sans photo
+        type: string
