@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       { id: "colliers", titre: "COLLIERS" },
       { id: "bagues", titre: "BAGUES" },
       { id: "boucles-oreilles", titre: "BOUCLES D’OREILLES" },
-      { id: "autres-bijoux", titre: "CRÉER MON BIJOU" }
+      { id: "autres-bijoux", titre: "AUTRES BIJOUX" }
     ];
     const groupes = new Map(categories.map(function (categorie) {
       return [categorie.id, []];
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     categories.forEach(function (categorie) {
       const produits = groupes.get(categorie.id);
+      if (categorie.id === "autres-bijoux" && produits.length === 0) return;
 
       const section = creerElement("section", "section-categorie");
       section.id = categorie.id;

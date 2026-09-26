@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7e8dc">
+  <title>Créer mon bijou — Ma poulette</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+  <header class="atelier-header">
+    <a class="retour-boutique" href="index.html">&larr; Retour à la boutique</a>
+    <a class="atelier-marque" href="index.html">Ma poulette</a>
+    <span class="atelier-label">ATELIER PERSONNALISÉ</span>
+  </header>
+
+  <main class="atelier-main">
+    <div class="intro-atelier">
+      <p class="surtitre">UNE PIÈCE À TON IMAGE</p>
+      <h1>Créer mon bijou</h1>
+      <p>Choisis les détails qui te ressemblent. Nous te répondrons avec une proposition et un prix avant la fabrication.</p>
+    </div>
+
+    <div class="configurateur">
+      <form id="formulaire-personnalisation">
+        <fieldset class="groupe-choix">
+          <legend><span class="numero-etape">01</span> Quel bijou souhaites-tu ?</legend>
+          <div class="choix-type">
+            <label class="option-type"><input type="radio" name="type" value="Bracelet" checked><span class="symbole-type" aria-hidden="true">◌</span><span>Bracelet</span></label>
+            <label class="option-type"><input type="radio" name="type" value="Collier"><span class="symbole-type" aria-hidden="true">◉</span><span>Collier</span></label>
+            <label class="option-type"><input type="radio" name="type" value="Bague"><span class="symbole-type" aria-hidden="true">○</span><span>Bague</span></label>
+            <label class="option-type"><input type="radio" name="type" value="Boucles d’oreilles"><span class="symbole-type" aria-hidden="true">〰</span><span>Boucles d’oreilles</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe-choix">
+          <legend><span class="numero-etape">02</span> Choisis la finition</legend>
+          <div class="champ-double">
+            <label class="champ-select"><span>Métal</span><select name="metal"><option>Acier inoxydable doré</option><option>Acier inoxydable argenté</option><option>Acier inoxydable rose</option></select></label>
+            <label class="champ-select"><span>Pierre ou détail</span><select name="pierre"><option>Aucune pierre</option><option>Quartz rose</option><option>Pierre de lune</option><option>Perle d’eau douce</option><option>Autre (à préciser)</option></select></label>
+          </div>
+          <div class="champ-double finition-ligne">
+            <label class="champ-select"><span>Style</span><select name="style"><option>Fin et délicat</option><option>Naturel et organique</option><option>Minimaliste</option><option>Coloré et fleuri</option></select></label>
+            <label class="champ-select"><span>Longueur souhaitée</span><select name="longueur"><option>Standard</option><option>Ajustable</option><option>Courte</option><option>Longue</option></select></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe-choix gravure-groupe">
+          <legend><span class="numero-etape">03</span> Un petit mot ?</legend>
+          <label class="case-gravure"><input id="avec-gravure" name="avecGravure" type="checkbox"><span>Je souhaite une gravure</span></label>
+          <label class="champ-select champ-gravure" id="champ-gravure" hidden><span>Texte à graver (20 caractères maximum)</span><input name="gravure" type="text" maxlength="20" placeholder="Un prénom, une date…"></label>
+        </fieldset>
+
+        <fieldset class="groupe-choix coordonnees-groupe">
+          <legend><span class="numero-etape">04</span> Comment te répondre ?</legend>
+          <div class="champ-double">
+            <label class="champ-select"><span>Ton prénom</span><input name="prenom" type="text" autocomplete="given-name" required placeholder="Prénom"></label>
+            <label class="champ-select"><span>Ton adresse e-mail</span><input name="email" type="email" autocomplete="email" required placeholder="nom@exemple.fr"></label>
+          </div>
+          <label class="champ-select champ-message"><span>Une précision pour l’atelier ?</span><textarea name="message" rows="3" maxlength="500" placeholder="Couleurs, inspiration, occasion… (facultatif)"></textarea></label>
+        </fieldset>
+
+        <button class="envoyer-demande" type="submit">Envoyer ma demande <span aria-hidden="true">&rarr;</span></button>
+        <p class="note-envoi">Ta messagerie s’ouvrira avec ta demande prête à envoyer. La fabrication commence seulement après validation du devis.</p>
+      </form>
+
+      <aside class="resume-atelier" aria-live="polite">
+        <p class="resume-surtitre">TON IDÉE PREND FORME</p>
+        <img class="photo-exemple" src="media/products/Capture d'écran 2026-09-25 210447.png" alt="Exemple de bracelet confectionné à l’atelier">
+        <p class="legende-photo">Exemple de création de l’atelier</p>
+        <h2 id="resume-type">Bracelet</h2>
+        <dl class="resume-details">
+          <div><dt>Métal</dt><dd id="resume-metal">Acier inoxydable doré</dd></div>
+          <div><dt>Pierre</dt><dd id="resume-pierre">Aucune pierre</dd></div>
+          <div><dt>Style</dt><dd id="resume-style">Fin et délicat</dd></div>
+          <div><dt>Longueur</dt><dd id="resume-longueur">Standard</dd></div>
+          <div id="resume-gravure-ligne" hidden><dt>Gravure</dt><dd id="resume-gravure"></dd></div>
+        </dl>
+        <p class="resume-note">Chaque pièce est réalisée sur demande. Le prix et les possibilités seront confirmés par e-mail.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="atelier-footer"><a href="index.html">Ma poulette</a><a href="mentions-legales.html">Mentions légales</a></footer>
+  <script src="custom.js"></script>
+</body>
+</html>

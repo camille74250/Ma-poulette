@@ -1,0 +1,91 @@
+:root {
+  --atelier-paper: #fffdf9;
+  --atelier-canvas: #f7eee7;
+  --atelier-ink: #302825;
+  --atelier-muted: #746763;
+  --atelier-line: #e6d8ce;
+  --atelier-rose: #a7463d;
+  --atelier-blush: #f3d9d5;
+  --atelier-green: #476256;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--atelier-ink); background: var(--atelier-paper); font-family: "Lora", Georgia, serif; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.atelier-header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 64px; padding: 0 max(22px, calc((100% - 1180px) / 2)); border-bottom: 1px solid var(--atelier-line); background: var(--atelier-paper); }
+.retour-boutique { color: var(--atelier-muted); font-family: Arial, sans-serif; font-size: 13px; text-decoration: none; }
+.retour-boutique:hover, .atelier-footer a:hover { color: var(--atelier-rose); }
+.atelier-marque { color: var(--atelier-ink); font-size: 17px; font-weight: 600; text-decoration: none; }
+.atelier-label { justify-self: end; color: var(--atelier-green); font-family: Arial, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+
+.atelier-main { width: min(1180px, calc(100% - 44px)); margin: 54px auto 76px; }
+.intro-atelier { max-width: 670px; margin-bottom: 34px; }
+.surtitre, .resume-surtitre { margin: 0 0 10px; color: var(--atelier-rose); font-family: Arial, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.intro-atelier h1 { margin: 0 0 12px; font-size: 38px; font-weight: 500; line-height: 1.15; }
+.intro-atelier > p:last-child { max-width: 590px; margin: 0; color: var(--atelier-muted); font-size: 15px; line-height: 1.7; }
+
+.configurateur { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(270px, .75fr); align-items: start; gap: 46px; }
+#formulaire-personnalisation { min-width: 0; }
+.groupe-choix { min-width: 0; margin: 0; padding: 0 0 27px; border: 0; border-bottom: 1px solid var(--atelier-line); }
+.groupe-choix + .groupe-choix { padding-top: 23px; }
+.groupe-choix legend { width: 100%; margin-bottom: 16px; font-size: 16px; font-weight: 600; }
+.numero-etape { display: inline-block; width: 31px; margin-right: 7px; color: var(--atelier-rose); font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; }
+.choix-type { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.option-type { position: relative; display: grid; min-height: 93px; align-content: center; justify-items: center; gap: 7px; padding: 9px 5px; border: 1px solid var(--atelier-line); background: var(--atelier-paper); color: var(--atelier-ink); font-family: Arial, sans-serif; font-size: 12px; text-align: center; cursor: pointer; }
+.option-type:hover { border-color: #c48b81; }
+.option-type.is-selected { border-color: var(--atelier-rose); background: #fbf1ee; box-shadow: inset 0 0 0 1px var(--atelier-rose); }
+.option-type input { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.option-type:has(input:focus-visible) { outline: 2px solid var(--atelier-green); outline-offset: 3px; }
+.symbole-type { color: var(--atelier-rose); font-family: Georgia, serif; font-size: 27px; line-height: 1; }
+
+.champ-double { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.finition-ligne { margin-top: 14px; }
+.champ-select { display: grid; min-width: 0; gap: 7px; color: var(--atelier-muted); font-family: Arial, sans-serif; font-size: 11px; font-weight: 600; }
+.champ-select input, .champ-select select, .champ-select textarea { width: 100%; min-height: 43px; padding: 10px 11px; border: 1px solid var(--atelier-line); border-radius: 0; outline: none; background: #fff; color: var(--atelier-ink); font-family: Arial, sans-serif; font-size: 13px; font-weight: 400; }
+.champ-select textarea { min-height: 76px; resize: vertical; }
+.champ-select input:focus, .champ-select select:focus, .champ-select textarea:focus { border-color: var(--atelier-rose); box-shadow: 0 0 0 2px rgb(167 70 61 / 12%); }
+.case-gravure { display: inline-flex; align-items: center; gap: 9px; color: var(--atelier-ink); font-family: Arial, sans-serif; font-size: 13px; cursor: pointer; }
+.case-gravure input { width: 17px; height: 17px; accent-color: var(--atelier-rose); }
+.champ-gravure { max-width: 360px; margin-top: 14px; }
+.champ-gravure[hidden], .resume-details [hidden] { display: none; }
+.champ-message { margin-top: 14px; }
+
+.envoyer-demande { display: flex; width: 100%; min-height: 50px; align-items: center; justify-content: space-between; margin-top: 24px; padding: 0 17px; border: 0; border-radius: 0; background: var(--atelier-green); color: #fff; font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; }
+.envoyer-demande:hover { background: #354d43; }
+.envoyer-demande span { font-size: 20px; }
+.note-envoi { max-width: 560px; margin: 11px 0 0; color: var(--atelier-muted); font-family: Arial, sans-serif; font-size: 11px; line-height: 1.6; }
+
+.resume-atelier { position: sticky; top: 20px; padding-top: 1px; }
+.photo-exemple { display: block; width: 100%; max-height: 300px; aspect-ratio: 4 / 3; object-fit: cover; background: var(--atelier-blush); }
+.legende-photo { margin: 7px 0 18px; color: var(--atelier-muted); font-family: Arial, sans-serif; font-size: 10px; }
+.resume-atelier h2 { margin: 0 0 14px; color: var(--atelier-ink); font-size: 24px; font-weight: 500; text-align: left; }
+.resume-details { margin: 0; border-top: 1px solid var(--atelier-line); }
+.resume-details div { display: grid; grid-template-columns: 90px 1fr; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--atelier-line); font-family: Arial, sans-serif; font-size: 12px; }
+.resume-details dt { color: var(--atelier-muted); }
+.resume-details dd { margin: 0; color: var(--atelier-ink); text-align: right; }
+.resume-note { margin: 16px 0 0; padding-left: 12px; border-left: 2px solid var(--atelier-rose); color: var(--atelier-muted); font-size: 12px; line-height: 1.6; }
+.atelier-footer { display: flex; justify-content: space-between; padding: 19px max(22px, calc((100% - 1180px) / 2)); border-top: 1px solid var(--atelier-line); background: var(--atelier-canvas); }
+.atelier-footer a { color: var(--atelier-muted); font-family: Arial, sans-serif; font-size: 12px; text-decoration: none; }
+
+@media (max-width: 760px) {
+  .atelier-main { width: min(620px, calc(100% - 32px)); margin-top: 34px; }
+  .configurateur { grid-template-columns: 1fr; gap: 32px; }
+  .resume-atelier { position: static; }
+  .photo-exemple { max-height: 250px; }
+  .intro-atelier { margin-bottom: 23px; }
+}
+
+@media (max-width: 480px) {
+  .atelier-header { grid-template-columns: 1fr auto; gap: 9px; min-height: 58px; padding: 0 14px; }
+  .atelier-marque { grid-column: 2; grid-row: 1; }
+  .retour-boutique { grid-column: 1; grid-row: 1; font-size: 11px; }
+  .atelier-label { display: none; }
+  .intro-atelier h1 { font-size: 31px; }
+  .intro-atelier > p:last-child { font-size: 14px; }
+  .choix-type { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .option-type { min-height: 76px; }
+  .champ-double { grid-template-columns: 1fr; gap: 12px; }
+  .atelier-footer { padding-right: 16px; padding-left: 16px; }
+}

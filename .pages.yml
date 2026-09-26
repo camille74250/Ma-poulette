@@ -40,7 +40,7 @@ content:
             - name: boucles-oreilles
               label: BOUCLES D’OREILLES
             - name: autres-bijoux
-              label: CRÉER MON BIJOU
+              label: AUTRES BIJOUX
       - name: image
         label: Photo
         type: image
