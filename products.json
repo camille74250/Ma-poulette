@@ -5,7 +5,6 @@
     "description": "Un collier délicat, façonné à la main.",
     "prix": 35,
     "categorie": "colliers",
-    "image": "",
     "emoji": "☀️"
   },
   {
@@ -14,7 +13,6 @@
     "description": "Des boucles légères et colorées.",
     "prix": 28,
     "categorie": "boucles-oreilles",
-    "image": "",
     "emoji": "🌸"
   },
   {
@@ -23,7 +21,6 @@
     "description": "Une bague fine aux reflets dorés.",
     "prix": 32,
     "categorie": "bagues",
-    "image": "",
     "emoji": "🌙"
   },
   {
@@ -34,5 +31,8 @@
     "categorie": "bracelets",
     "image": "media/products/Capture d'écran 2026-09-25 210447.png",
     "emoji": "✨"
+  },
+  {
+    "id": "3c608972-878f-4d60-9dc6-fcb5cc403ea9"
   }
 ]
