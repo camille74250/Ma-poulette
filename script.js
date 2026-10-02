@@ -3,8 +3,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const listePanier = document.getElementById("liste-panier");
   const totalPanier = document.getElementById("total-panier");
   const compteurPanier = document.getElementById("compteur-panier");
-  const panier = [];
+  let panier = [];
   let produitsCatalogue = [];
+
+  try {
+    const panierEnregistre = JSON.parse(localStorage.getItem("ma-poulette-panier") || "[]");
+    if (Array.isArray(panierEnregistre)) {
+      panier = panierEnregistre.filter(function (article) {
+        return article && typeof article.nom === "string" && Number.isFinite(Number(article.prix));
+      });
+    }
+  } catch (erreur) {
+    panier = [];
+  }
+
+  function sauvegarderPanier() {
+    try {
+      localStorage.setItem("ma-poulette-panier", JSON.stringify(panier));
+    } catch (erreur) {
+      // Le panier reste utilisable même si le stockage du navigateur est indisponible.
+    }
+  }
 
   async function chargerProduits() {
     try {
@@ -104,23 +123,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function afficherPanier() {
     let total = 0;
-    listePanier.replaceChildren();
-    if (panier.length === 0) {
-      listePanier.append(creerElement("p", "", "Votre panier est vide."));
+    if (listePanier) {
+      listePanier.replaceChildren();
+      if (panier.length === 0) {
+        listePanier.append(creerElement("p", "", "Votre panier est vide."));
+      }
+
+      panier.forEach(function (article, index) {
+        total += Number(article.prix);
+        const ligne = creerElement("div", "ligne-panier");
+        ligne.append(creerElement("p", "", article.nom + " — " + Number(article.prix).toLocaleString("fr-FR") + " €"));
+        const boutonRetirer = creerElement("button", "retirer-panier", "Retirer");
+        boutonRetirer.type = "button";
+        boutonRetirer.dataset.index = index;
+        ligne.append(boutonRetirer);
+        listePanier.append(ligne);
+      });
+    } else {
+      total = panier.reduce(function (somme, article) {
+        return somme + Number(article.prix);
+      }, 0);
     }
 
-    panier.forEach(function (article) {
-      total += article.prix;
-      listePanier.append(creerElement("p", "", article.nom + " — " + article.prix + " €"));
-    });
-
-    totalPanier.textContent = total.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
-    compteurPanier.textContent = panier.length;
+    if (totalPanier) totalPanier.textContent = total.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
+    if (compteurPanier) compteurPanier.textContent = panier.length;
   }
 
   const diapositives = Array.from(document.querySelectorAll(".diapo"));
   const pointsDiapo = Array.from(document.querySelectorAll(".diapo-point"));
   const boutonPauseDiapo = document.getElementById("diapo-pause");
+  if (diapositives.length > 0) {
   let indexDiapo = 0;
   let minuterieDiapo;
   let diapoEnPause = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -175,8 +207,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener("visibilitychange", demarrerDiaporama);
   demarrerDiaporama();
+  }
 
-  listeProduits.addEventListener("click", function (evenement) {
+  if (listeProduits) listeProduits.addEventListener("click", function (evenement) {
     const bouton = evenement.target.closest(".ajouter-panier");
     if (!bouton) return;
 
@@ -186,16 +219,22 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!produit) return;
 
     panier.push({ nom: produit.nom, prix: Number(produit.prix) });
+    sauvegarderPanier();
     afficherPanier();
   });
 
-  document.getElementById("ouvrir-panier").addEventListener("click", function () {
-    document.getElementById("panier").scrollIntoView({ behavior: "smooth" });
+  if (listePanier) listePanier.addEventListener("click", function (evenement) {
+    const bouton = evenement.target.closest(".retirer-panier");
+    if (!bouton) return;
+    panier.splice(Number(bouton.dataset.index), 1);
+    sauvegarderPanier();
+    afficherPanier();
   });
 
   const boutonMenuCategories = document.getElementById("bouton-menu-categories");
   const liensCategories = document.getElementById("liens-categories");
 
+  if (boutonMenuCategories && liensCategories) {
   boutonMenuCategories.addEventListener("click", function () {
     const ouvert = boutonMenuCategories.getAttribute("aria-expanded") === "true";
     boutonMenuCategories.setAttribute("aria-expanded", String(!ouvert));
@@ -217,8 +256,10 @@ document.addEventListener("DOMContentLoaded", function () {
     boutonMenuCategories.setAttribute("aria-label", "Ouvrir les catégories");
     boutonMenuCategories.focus();
   });
+  }
 
-  document.getElementById("envoyer-commande").addEventListener("click", function () {
+  const boutonCommande = document.getElementById("envoyer-commande");
+  if (boutonCommande) boutonCommande.addEventListener("click", function () {
     if (panier.length === 0) {
       alert("Votre panier est vide.");
       return;
@@ -237,5 +278,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   afficherPanier();
-  chargerProduits();
+  if (listeProduits) chargerProduits();
 });

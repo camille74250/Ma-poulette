@@ -24,11 +24,11 @@
     </div>
     <h1 class="titre-site"><img class="logo-titre" src="logo.png" alt="Ma Poulette"></h1>
     <p class="sous-titre-site"><span class="coeur-logo" aria-hidden="true">♥</span><span>Bijoux confectionnés avec amour</span><span class="coeur-logo" aria-hidden="true">♥</span></p>
-    <button id="ouvrir-panier" class="panier-bouton" type="button" title="Voir mon panier">
+    <a href="panier.html" class="panier-bouton" title="Voir mon panier">
       <span class="visually-hidden">Voir mon panier</span>
       <img src="panier-osier.svg" alt="">
       <span id="compteur-panier" class="compteur-panier" aria-live="polite">0</span>
-    </button>
+    </a>
   </header>
 
   <section class="diaporama" aria-label="Diaporama de photos de bijoux">
@@ -68,16 +68,6 @@
     <p class="catalogue-vide">Chargement des créations...</p>
   </section>
   </main>
-
-  <aside id="panier">
-    <h2>Votre panier</h2>
-    <div id="liste-panier">
-      <p>Votre panier est vide.</p>
-    </div>
-    <p class="total-panier">Total : <span id="total-panier">0</span> €</p>
-    <button id="envoyer-commande">Commander</button>
-    <p class="note-commande">Après vérification de ta commande, nous t’enverrons un lien Mollie sécurisé pour le paiement.</p>
-  </aside>
 
   <footer>
     <p>© 2026 Ma poulette</p>

@@ -328,6 +328,7 @@ footer a {
   border-radius: 50%;
   color: #000;
   background: #ffe7cd;
+  text-decoration: none;
 }
 
 .panier-bouton img {
@@ -379,6 +380,36 @@ footer a {
 
 #envoyer-commande {
   background: #f18296;
+}
+
+.ligne-panier {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(167, 70, 61, 0.2);
+  text-align: left;
+}
+
+.ligne-panier p {
+  margin: 0;
+}
+
+.retirer-panier {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #542c2b;
+  background: #f6e7d9;
+  font-size: 13px;
+}
+
+.retour-boutique-panier {
+  display: block;
+  width: fit-content;
+  margin: 24px auto 0;
+  color: #7f3934;
 }
 
 .menu-categories {
