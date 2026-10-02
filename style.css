@@ -294,10 +294,16 @@ footer a {
 }
 
 .produits {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: stretch;
   gap: 24px;
+}
+
+.produits .article-produit {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
 }
 
 .photo-bijou {
