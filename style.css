@@ -259,6 +259,14 @@ footer a {
   margin: 40px auto;
 }
 
+.retour-boutique-mentions {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 14px;
+  color: #7f3934;
+  font-size: 14px;
+}
+
 .mentions-legales dl {
   margin: 6px 0;
 }
