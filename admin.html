@@ -28,15 +28,18 @@
     <section class="cms-panel">
       <p class="eyebrow">MA POULETTE · CATALOGUE</p>
       <h1>Gérer les articles</h1>
-      <p>Pages CMS enregistrera les articles et leurs photos dans le dépôt GitHub. GitHub Pages les affichera après la publication de la branche configurée.</p>
-      <p class="cms-note">Avant la première connexion, publie cette configuration et le catalogue sur GitHub.</p>
+      <p>Le catalogue reste dans GitHub. Cloudflare Pages publiera automatiquement le site après chaque mise à jour de la branche <strong>main</strong>.</p>
       <ol>
-        <li>Connecte-toi à Pages CMS avec le compte GitHub qui possède le dépôt.</li>
-        <li>Autorise Pages CMS à accéder au dépôt <strong>camille74250/Ma-poulette</strong>.</li>
-        <li>Choisis la branche publiée par GitHub Pages (la branche courante du dépôt est <strong>main</strong>), puis ouvre <strong>Articles de la boutique</strong>.</li>
-        <li>Ajoute ou modifie les articles et enregistre : les changements seront publiés par GitHub Pages.</li>
+        <li>Dans Cloudflare, ouvre <strong>Workers &amp; Pages</strong>, puis crée une application Pages reliée à GitHub.</li>
+        <li>Autorise le dépôt <strong>camille74250/Ma-poulette</strong> et sélectionne la branche <strong>main</strong>.</li>
+        <li>Choisis le preset <strong>None</strong>, la commande de build <code>exit 0</code> et le dossier de sortie <code>.</code> (racine du dépôt).</li>
+        <li>Déploie le site. Son adresse gratuite se terminera par <strong>.pages.dev</strong>.</li>
+        <li>Pour gérer les produits, connecte-toi à Pages CMS et ouvre <strong>Articles de la boutique</strong>. Chaque sauvegarde dans GitHub déclenchera un nouveau déploiement.</li>
       </ol>
+      <a class="cms-lien" href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Ouvrir Cloudflare</a>
       <a class="cms-lien" href="https://app.pagescms.org/" target="_blank" rel="noopener noreferrer">Ouvrir Pages CMS</a>
+      <p>Pour encaisser : vérifie la commande ou le devis, crée un lien du montant exact dans <strong>Mollie → Payment links</strong>, puis envoie-le au client. Le paiement est saisi sur la page sécurisée Mollie, pas sur ta boutique.</p>
+      <a class="cms-lien" href="https://my.mollie.com/dashboard" target="_blank" rel="noopener noreferrer">Ouvrir Mollie</a>
       <p class="cms-note">La première connexion nécessite d’autoriser l’application GitHub Pages CMS. Ne partage jamais tes identifiants GitHub ou tes clés d’accès.</p>
     </section>
   </main>

@@ -31,6 +31,36 @@
     </button>
   </header>
 
+  <section class="diaporama" aria-label="Diaporama de photos de bijoux">
+    <div class="diaporama-interieur">
+      <div class="diaporama-vues" aria-live="off">
+        <article class="diapo is-active" aria-roledescription="diapositive" aria-label="1 sur 4">
+          <img src="media/products/Capture d'écran 2026-09-25 210447.png" alt="Bracelet de perles aux nuances vertes et ivoire sur bois">
+        </article>
+        <article class="diapo" aria-roledescription="diapositive" aria-label="2 sur 4" aria-hidden="true">
+          <img src="media/carousel/colliers-inspiration.jpg" alt="Plusieurs colliers fins portés ensemble">
+        </article>
+        <article class="diapo" aria-roledescription="diapositive" aria-label="3 sur 4" aria-hidden="true">
+          <img src="media/carousel/bagues-inspiration.jpg" alt="Deux bagues dorées posées sur une pierre claire">
+        </article>
+        <article class="diapo" aria-roledescription="diapositive" aria-label="4 sur 4" aria-hidden="true">
+          <img src="media/carousel/pendentifs-inspiration.jpg" alt="Pendentifs et chaînes dorés avec une pierre bleu profond">
+        </article>
+      </div>
+      <div class="diaporama-commandes" aria-label="Commandes du diaporama">
+        <button class="diapo-fleche" id="diapo-precedente" type="button" aria-label="Photo précédente">&larr;</button>
+        <div class="diapo-points" aria-label="Choisir une photo">
+          <button type="button" class="diapo-point is-active" aria-label="Afficher la photo 1" aria-current="true"></button>
+          <button type="button" class="diapo-point" aria-label="Afficher la photo 2"></button>
+          <button type="button" class="diapo-point" aria-label="Afficher la photo 3"></button>
+          <button type="button" class="diapo-point" aria-label="Afficher la photo 4"></button>
+        </div>
+        <button class="diapo-fleche" id="diapo-suivante" type="button" aria-label="Photo suivante">&rarr;</button>
+        <button class="diapo-pause" id="diapo-pause" type="button" aria-label="Mettre le diaporama en pause" aria-pressed="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </section>
+
   <main>
 <h2>Nos créations</h2>
 
@@ -46,6 +76,7 @@
     </div>
     <p class="total-panier">Total : <span id="total-panier">0</span> €</p>
     <button id="envoyer-commande">Commander</button>
+    <p class="note-commande">Après vérification de ta commande, nous t’enverrons un lien Mollie sécurisé pour le paiement.</p>
   </aside>
 
   <footer>

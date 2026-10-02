@@ -10,20 +10,26 @@ body {
 }
 
 header {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 20px;
   position: relative;
-  padding: 112px 24px 72px;
+  padding: 18px clamp(16px, 4vw, 48px);
   text-align: center;
   color: #000;
   background: #f18296;
 }
 
 .titre-site {
+  grid-column: 2;
+  grid-row: 1;
   position: relative;
-  width: min(55vw, 380px);
+  width: min(33vw, 300px);
   aspect-ratio: 578 / 266;
   margin: 0;
-  margin-right: auto;
-  margin-left: auto;
+  justify-self: center;
   overflow: hidden;
 }
 
@@ -37,12 +43,14 @@ header {
 }
 
 .sous-titre-site {
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin: 8px 0 16px;
+  margin: 0;
   font-size: 0.9rem;
   font-family: "Lora", serif;
 }
@@ -54,19 +62,114 @@ header {
   line-height: 1;
 }
 
+.diaporama {
+  padding: 28px 24px;
+  background: #f6e7d9;
+}
+
+.diaporama-interieur {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.diaporama-vues {
+  position: relative;
+  height: clamp(320px, 34vw, 420px);
+  overflow: hidden;
+  background: #f1d9d1;
+}
+
+.diapo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+  min-height: 0;
+  overflow: hidden;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 550ms ease, visibility 550ms ease;
+}
+
+.diapo.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.diapo > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center 48%;
+  background: #e1d8d0;
+}
+
+.diapo > img[src*="colliers-inspiration"] {
+  object-position: center 42%;
+}
+
+.diaporama-commandes {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.diapo-fleche, .diapo-pause {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(127, 57, 52, 0.35);
+  border-radius: 50%;
+  color: #542c2b;
+  background: transparent;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.diapo-fleche:hover, .diapo-pause:hover { background: #efdbd2; }
+.diapo-points { display: flex; align-items: center; gap: 7px; }
+.diapo-point { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #c8aaa0; }
+.diapo-point.is-active { width: 22px; border-radius: 8px; background: #a7463d; }
+.diapo-pause { display: flex; align-items: center; justify-content: center; gap: 3px; margin-left: 2px; }
+.diapo-pause span { width: 2px; height: 10px; background: currentColor; }
+.diapo-pause[aria-pressed="true"] span:first-child { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid currentColor; background: transparent; }
+.diapo-pause[aria-pressed="true"] span:last-child { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .diapo { transition: none; }
+}
+
 @media (max-width: 480px) {
   header {
-    padding-top: 94px;
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    column-gap: 8px;
+    padding: 12px;
   }
 
-  .panier-bouton {
-    top: 16px;
-    right: 16px;
+  .titre-site {
+    width: min(62vw, 230px);
   }
 
   .sous-titre-site {
-    gap: 8px;
-    font-size: 0.8rem;
+    gap: 6px;
+    font-size: 0.68rem;
   }
 }
 
@@ -213,9 +316,10 @@ footer a {
 }
 
 .panier-bouton {
-  position: absolute;
-  top: 24px;
-  right: 24px;
+  position: relative;
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  justify-self: end;
   display: grid;
   width: 48px;
   height: 48px;
@@ -278,9 +382,9 @@ footer a {
 }
 
 .menu-categories {
-  position: absolute;
-  top: 24px;
-  left: 24px;
+  position: relative;
+  grid-column: 1;
+  grid-row: 1 / span 2;
   z-index: 2;
 }
 
@@ -383,10 +487,12 @@ html {
 }
 
 @media (max-width: 480px) {
-  .menu-categories {
-    top: 16px;
-    left: 16px;
-  }
-
   .liens-categories { top: 52px; }
+}
+
+@media (max-width: 640px) {
+  .diaporama { padding: 16px 14px 8px; }
+  .diaporama-vues { height: auto; min-height: 0; aspect-ratio: 1.3; }
+  .diapo > img { grid-column: 1; grid-row: 1; height: 100%; object-position: center 46%; }
+  .diaporama-commandes { min-height: 44px; gap: 9px; }
 }

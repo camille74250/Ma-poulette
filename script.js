@@ -118,6 +118,64 @@ document.addEventListener("DOMContentLoaded", function () {
     compteurPanier.textContent = panier.length;
   }
 
+  const diapositives = Array.from(document.querySelectorAll(".diapo"));
+  const pointsDiapo = Array.from(document.querySelectorAll(".diapo-point"));
+  const boutonPauseDiapo = document.getElementById("diapo-pause");
+  let indexDiapo = 0;
+  let minuterieDiapo;
+  let diapoEnPause = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function afficherDiapo(index) {
+    indexDiapo = (index + diapositives.length) % diapositives.length;
+    diapositives.forEach(function (diapo, position) {
+      const active = position === indexDiapo;
+      diapo.classList.toggle("is-active", active);
+      diapo.setAttribute("aria-hidden", String(!active));
+      pointsDiapo[position].classList.toggle("is-active", active);
+      if (active) pointsDiapo[position].setAttribute("aria-current", "true");
+      else pointsDiapo[position].removeAttribute("aria-current");
+    });
+  }
+
+  function demarrerDiaporama() {
+    window.clearInterval(minuterieDiapo);
+    if (diapoEnPause || document.hidden || diapositives.length < 2) return;
+    minuterieDiapo = window.setInterval(function () {
+      afficherDiapo(indexDiapo + 1);
+    }, 4800);
+  }
+
+  function naviguerDiapo(index) {
+    afficherDiapo(index);
+    demarrerDiaporama();
+  }
+
+  document.getElementById("diapo-precedente").addEventListener("click", function () {
+    naviguerDiapo(indexDiapo - 1);
+  });
+
+  document.getElementById("diapo-suivante").addEventListener("click", function () {
+    naviguerDiapo(indexDiapo + 1);
+  });
+
+  pointsDiapo.forEach(function (point, index) {
+    point.addEventListener("click", function () {
+      naviguerDiapo(index);
+    });
+  });
+
+  boutonPauseDiapo.setAttribute("aria-pressed", String(diapoEnPause));
+  boutonPauseDiapo.setAttribute("aria-label", diapoEnPause ? "Reprendre le diaporama" : "Mettre le diaporama en pause");
+  boutonPauseDiapo.addEventListener("click", function () {
+    diapoEnPause = !diapoEnPause;
+    boutonPauseDiapo.setAttribute("aria-pressed", String(diapoEnPause));
+    boutonPauseDiapo.setAttribute("aria-label", diapoEnPause ? "Reprendre le diaporama" : "Mettre le diaporama en pause");
+    demarrerDiaporama();
+  });
+
+  document.addEventListener("visibilitychange", demarrerDiaporama);
+  demarrerDiaporama();
+
   listeProduits.addEventListener("click", function (evenement) {
     const bouton = evenement.target.closest(".ajouter-panier");
     if (!bouton) return;
@@ -170,6 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
     panier.forEach(function (article) {
       commande += "- " + article.nom + " : " + article.prix + " €\n";
     });
+    commande += "\nTotal : " + totalPanier.textContent + " €\n";
+    commande += "Merci de confirmer la disponibilité et de m’envoyer un lien Mollie sécurisé pour le paiement.\n";
 
     window.location.href =
       "mailto:camcam.bijouterie@outlook.com?subject=Commande Ma poulette&body=" +
