@@ -382,6 +382,21 @@ footer a {
   background: #f18296;
 }
 
+#envoyer-commande:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.erreur-paiement {
+  margin: 16px 0 0;
+  color: #7f3934;
+  font-weight: 700;
+}
+
+.erreur-paiement[hidden] {
+  display: none;
+}
+
 .ligne-panier {
   display: flex;
   align-items: center;
@@ -526,4 +541,25 @@ html {
   .diaporama-vues { height: auto; min-height: 0; aspect-ratio: 1.3; }
   .diapo > img { grid-column: 1; grid-row: 1; height: 100%; object-position: center 46%; }
   .diaporama-commandes { min-height: 44px; gap: 9px; }
+}
+
+.retour-paiement {
+  width: min(600px, calc(100% - 32px));
+  margin: 80px auto;
+  text-align: center;
+}
+
+.retour-paiement h1 {
+  margin-bottom: 16px;
+  font-size: 2rem;
+}
+
+.retour-paiement p {
+  line-height: 1.6;
+}
+
+.retour-paiement a {
+  display: inline-block;
+  margin: 12px;
+  color: #7f3934;
 }

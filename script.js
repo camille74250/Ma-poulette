@@ -264,18 +264,65 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Votre panier est vide.");
       return;
     }
-
-    let commande = "Bonjour,\n\nJe souhaite commander :\n";
-    panier.forEach(function (article) {
-      commande += "- " + article.nom + " : " + article.prix + " €\n";
-    });
-    commande += "\nTotal : " + totalPanier.textContent + " €\n";
-    commande += "Merci de confirmer la disponibilité et de m’envoyer un lien Mollie sécurisé pour le paiement.\n";
-
-    window.location.href =
-      "mailto:camcam.bijouterie@outlook.com?subject=Commande Ma poulette&body=" +
-      encodeURIComponent(commande);
+    lancerPaiement();
   });
+
+  async function lancerPaiement() {
+    const messagePaiement = document.getElementById("erreur-paiement");
+    boutonCommande.disabled = true;
+    boutonCommande.textContent = "Connexion à Mollie…";
+    if (messagePaiement) {
+      messagePaiement.hidden = true;
+      messagePaiement.textContent = "";
+    }
+
+    try {
+      let catalogue = produitsCatalogue;
+      if (catalogue.length === 0) {
+        const reponseCatalogue = await fetch("products.json", { cache: "no-store" });
+        if (!reponseCatalogue.ok) throw new Error("Impossible de vérifier le catalogue.");
+        catalogue = await reponseCatalogue.json();
+      }
+
+      const ids = panier.map(function (article) {
+        const produit = article.id
+          ? catalogue.find(function (element) { return element.id === article.id; })
+          : catalogue.find(function (element) {
+            return element.nom === article.nom && Number(element.prix) === Number(article.prix);
+          });
+        if (!produit) throw new Error("Un article de ton panier n’est plus disponible. Retire-le puis ajoute-le à nouveau.");
+        article.id = produit.id;
+        article.nom = produit.nom;
+        article.prix = Number(produit.prix);
+        return produit.id;
+      });
+      sauvegarderPanier();
+
+      const reponse = await fetch("/api/create-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: ids })
+      });
+      let resultat;
+      try {
+        resultat = await reponse.json();
+      } catch (erreur) {
+        throw new Error("Le service de paiement n’a pas répondu correctement. Réessaie dans quelques instants.");
+      }
+      if (!reponse.ok || !resultat.checkoutUrl) {
+        throw new Error(resultat.error || "Le paiement Mollie est momentanément indisponible.");
+      }
+
+      window.location.assign(resultat.checkoutUrl);
+    } catch (erreur) {
+      if (messagePaiement) {
+        messagePaiement.textContent = erreur.message || "Impossible de démarrer le paiement. Réessaie dans quelques instants.";
+        messagePaiement.hidden = false;
+      }
+      boutonCommande.disabled = false;
+      boutonCommande.textContent = "Valider mon panier";
+    }
+  }
 
   afficherPanier();
   if (listeProduits) chargerProduits();

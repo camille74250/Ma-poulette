@@ -38,7 +38,8 @@
       </div>
       <p class="total-panier">Total : <span id="total-panier">0</span> €</p>
       <button id="envoyer-commande" type="button">Valider mon panier</button>
-      <p class="note-commande">Après vérification de ta commande, nous t’enverrons un lien Mollie sécurisé pour le paiement.</p>
+      <p id="erreur-paiement" class="erreur-paiement" role="alert" hidden></p>
+      <p class="note-commande">Le paiement est traité de manière sécurisée par Mollie. Le panier reste conservé tant que le paiement n’est pas confirmé.</p>
     </section>
     <a class="retour-boutique-panier" href="index.html">← Retour à la boutique</a>
   </main>
