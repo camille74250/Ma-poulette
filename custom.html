@@ -21,46 +21,30 @@
     <div class="intro-atelier">
       <p class="surtitre">UNE PIÈCE À TON IMAGE</p>
       <h1>Créer mon bijou</h1>
-      <p>Choisis les détails qui te ressemblent. Nous te répondrons avec une proposition et un prix avant la fabrication.</p>
+      <p>Choisis la finition et la maille, puis décris le bijou que tu imagines. Nous te répondrons avec une proposition et un prix avant la fabrication.</p>
     </div>
 
     <div class="configurateur">
       <form id="formulaire-personnalisation">
         <fieldset class="groupe-choix">
-          <legend><span class="numero-etape">01</span> Quel bijou souhaites-tu ?</legend>
-          <div class="choix-type">
-            <label class="option-type"><input type="radio" name="type" value="Bracelet" checked><span class="symbole-type" aria-hidden="true">◌</span><span>Bracelet</span></label>
-            <label class="option-type"><input type="radio" name="type" value="Collier"><span class="symbole-type" aria-hidden="true">◉</span><span>Collier</span></label>
-            <label class="option-type"><input type="radio" name="type" value="Bague"><span class="symbole-type" aria-hidden="true">○</span><span>Bague</span></label>
-            <label class="option-type"><input type="radio" name="type" value="Boucles d’oreilles"><span class="symbole-type" aria-hidden="true">〰</span><span>Boucles d’oreilles</span></label>
+          <legend><span class="numero-etape">01</span> Choisis les finitions</legend>
+          <div class="champ-double">
+            <label class="champ-select"><span>Type d’acier</span><select name="metal"><option value="Acier inoxydable doré">Or</option><option value="Acier inoxydable argenté">Argent</option></select></label>
+            <label class="champ-select"><span>Type de maille</span><select name="maille"><option>Fine</option><option>Moyenne</option><option>Grande</option></select></label>
           </div>
         </fieldset>
 
         <fieldset class="groupe-choix">
-          <legend><span class="numero-etape">02</span> Choisis la finition</legend>
-          <div class="champ-double">
-            <label class="champ-select"><span>Métal</span><select name="metal"><option>Acier inoxydable doré</option><option>Acier inoxydable argenté</option><option>Acier inoxydable rose</option></select></label>
-            <label class="champ-select"><span>Pierre ou détail</span><select name="pierre"><option>Aucune pierre</option><option>Quartz rose</option><option>Pierre de lune</option><option>Perle d’eau douce</option><option>Autre (à préciser)</option></select></label>
-          </div>
-          <div class="champ-double finition-ligne">
-            <label class="champ-select"><span>Style</span><select name="style"><option>Fin et délicat</option><option>Naturel et organique</option><option>Minimaliste</option><option>Coloré et fleuri</option></select></label>
-            <label class="champ-select"><span>Longueur souhaitée</span><select name="longueur"><option>Standard</option><option>Ajustable</option><option>Courte</option><option>Longue</option></select></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="groupe-choix gravure-groupe">
-          <legend><span class="numero-etape">03</span> Un petit mot ?</legend>
-          <label class="case-gravure"><input id="avec-gravure" name="avecGravure" type="checkbox"><span>Je souhaite une gravure</span></label>
-          <label class="champ-select champ-gravure" id="champ-gravure" hidden><span>Texte à graver (20 caractères maximum)</span><input name="gravure" type="text" maxlength="20" placeholder="Un prénom, une date…"></label>
+          <legend><span class="numero-etape">02</span> Décris ta demande</legend>
+          <label class="champ-select champ-message"><span>Quel bijou imagines-tu ?</span><textarea name="message" rows="5" maxlength="1000" required placeholder="Décris ton idée, son style, son occasion ou les détails importants…"></textarea></label>
         </fieldset>
 
         <fieldset class="groupe-choix coordonnees-groupe">
-          <legend><span class="numero-etape">04</span> Comment te répondre ?</legend>
+          <legend><span class="numero-etape">03</span> Comment te répondre ?</legend>
           <div class="champ-double">
             <label class="champ-select"><span>Ton prénom</span><input name="prenom" type="text" autocomplete="given-name" required placeholder="Prénom"></label>
             <label class="champ-select"><span>Ton adresse e-mail</span><input name="email" type="email" autocomplete="email" required placeholder="nom@exemple.fr"></label>
           </div>
-          <label class="champ-select champ-message"><span>Une précision pour l’atelier ?</span><textarea name="message" rows="3" maxlength="500" placeholder="Couleurs, inspiration, occasion… (facultatif)"></textarea></label>
         </fieldset>
 
         <button class="envoyer-demande" type="submit">Envoyer ma demande <span aria-hidden="true">&rarr;</span></button>
@@ -68,18 +52,14 @@
       </form>
 
       <aside class="resume-atelier" aria-live="polite">
-        <p class="resume-surtitre">TON IDÉE PREND FORME</p>
-        <img class="photo-exemple" src="media/products/Capture d'écran 2026-09-25 210447.png" alt="Exemple de bracelet confectionné à l’atelier">
-        <p class="legende-photo">Exemple de création de l’atelier</p>
-        <h2 id="resume-type">Bracelet</h2>
+        <p class="resume-surtitre">TA DEMANDE</p>
+        <h2>Les finitions choisies</h2>
         <dl class="resume-details">
-          <div><dt>Métal</dt><dd id="resume-metal">Acier inoxydable doré</dd></div>
-          <div><dt>Pierre</dt><dd id="resume-pierre">Aucune pierre</dd></div>
-          <div><dt>Style</dt><dd id="resume-style">Fin et délicat</dd></div>
-          <div><dt>Longueur</dt><dd id="resume-longueur">Standard</dd></div>
-          <div id="resume-gravure-ligne" hidden><dt>Gravure</dt><dd id="resume-gravure"></dd></div>
+          <div><dt>Acier</dt><dd id="resume-metal">Acier inoxydable doré</dd></div>
+          <div><dt>Maille</dt><dd id="resume-maille">Fine</dd></div>
+          <div class="resume-demande-ligne"><dt>Ton idée</dt><dd id="resume-demande">Ta description apparaîtra ici.</dd></div>
         </dl>
-        <p class="resume-note">Chaque pièce est réalisée sur demande. Le prix et les possibilités seront confirmés par e-mail.</p>
+        <p class="resume-note">Nous confirmerons les possibilités et le prix par e-mail avant la fabrication.</p>
       </aside>
     </div>
   </main>
